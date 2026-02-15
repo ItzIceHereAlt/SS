@@ -427,6 +427,27 @@
           margin: 15px 0;
       }
 
+      .player-input-container {
+          margin-bottom: 15px;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          background: rgba(255,255,255,0.5);
+          padding: 10px 15px;
+          border-radius: 12px;
+          border: 1px solid rgba(0,0,0,0.05);
+      }
+      
+      .player-input {
+          flex: 1;
+          background: transparent;
+          border: none;
+          font-size: 1rem;
+          color: var(--text-primary);
+          font-family: inherit;
+          outline: none;
+      }
+
 
       
       .btn-copy-cmd {
@@ -1032,7 +1053,10 @@
 
       <div class="check-card">
         
-
+        <div class="player-input-container">
+            <span style="font-size: 1.2rem;">👤</span>
+            <input type="text" id="player-name" class="player-input" placeholder="Inserisci nome player per i comandi...">
+        </div>
 
         <div style="overflow-x: auto;">
           <table class="infraction-table">
@@ -1247,14 +1271,26 @@
 
       // Funzione specifica per copiare il comando del ban
       function copyBanCommand(time, reason) {
-          const playerName = "<player>";
+          const playerInput = document.getElementById('player-name');
+          let playerName = playerInput.value.trim();
+          
+          if (!playerName) {
+              playerName = "<player>";
+          }
+
           const command = `/tempban ${playerName} ${time} (${reason}) -s`;
           copyTextDirectly(command, `Comando copiato: ${command}`);
       }
 
       // Funzione per ban permanente
       function copyPermBanCommand(reason) {
-          const playerName = "<player>";
+          const playerInput = document.getElementById('player-name');
+          let playerName = playerInput.value.trim();
+          
+          if (!playerName) {
+              playerName = "<player>";
+          }
+
           // /ban <player> (reason) -s
           const command = `/ban ${playerName} (${reason}) -s`;
           copyTextDirectly(command, `Comando copiato: ${command}`);
