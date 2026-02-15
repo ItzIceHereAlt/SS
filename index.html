@@ -40,6 +40,7 @@
         --badge-orange-bg: #ffedd5; --badge-orange-text: #9a3412;
         --badge-danger-bg: #fee2e2; --badge-danger-text: #991b1b;
         --badge-info-bg: #e0f2fe; --badge-info-text: #075985;
+        --toast-bg: rgba(255, 255, 255, 0.9);
       }
 
       [data-theme="dark"] {
@@ -73,6 +74,7 @@
         --badge-orange-bg: rgba(234, 88, 12, 0.2); --badge-orange-text: #fdba74;
         --badge-danger-bg: rgba(239, 68, 68, 0.2); --badge-danger-text: #fca5a5;
         --badge-info-bg: rgba(14, 165, 233, 0.2); --badge-info-text: #7dd3fc;
+        --toast-bg: rgba(30, 41, 59, 0.95);
       }
 
       body {
@@ -360,7 +362,7 @@
       #toast {
         visibility: hidden;
         min-width: 250px;
-        background: rgba(255, 255, 255, 0.9);
+        background: var(--toast-bg);
         backdrop-filter: blur(10px);
         color: var(--text-primary);
         text-align: center;
