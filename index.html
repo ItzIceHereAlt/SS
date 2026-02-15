@@ -426,6 +426,47 @@
           border-radius: 8px;
           margin: 15px 0;
       }
+
+      .player-input-container {
+          margin-bottom: 15px;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          background: rgba(255,255,255,0.5);
+          padding: 10px 15px;
+          border-radius: 12px;
+          border: 1px solid rgba(0,0,0,0.05);
+      }
+      
+      .player-input {
+          flex: 1;
+          background: transparent;
+          border: none;
+          font-size: 1rem;
+          color: var(--text-primary);
+          font-family: inherit;
+          outline: none;
+      }
+      
+      .btn-copy-cmd {
+          background: var(--text-primary);
+          color: white;
+          border: none;
+          padding: 6px 12px;
+          border-radius: 8px;
+          font-size: 0.8rem;
+          cursor: pointer;
+          transition: all 0.2s;
+          display: inline-flex;
+          align-items: center;
+          gap: 5px;
+      }
+      
+      .btn-copy-cmd:hover {
+          background: var(--accent-color);
+          transform: translateY(-2px);
+          box-shadow: 0 4px 6px rgba(59, 130, 246, 0.2);
+      }
     </style>
   </head>
   <body>
@@ -1009,32 +1050,119 @@
       </div>
 
       <div class="check-card">
+        
+        <div class="player-input-container">
+            <span style="font-size: 1.2rem;">👤</span>
+            <input type="text" id="player-name" class="player-input" placeholder="Inserisci nome player (opzionale per comando)...">
+        </div>
+
         <div style="overflow-x: auto;">
           <table class="infraction-table">
             <thead>
               <tr>
-                <th style="width: 40%">Infrazione</th>
-                <th style="width: 40%">Motivazione Ufficiale</th>
-                <th style="width: 20%">Durata</th>
+                <th style="width: 35%">Infrazione</th>
+                <th style="width: 35%">Motivazione Ufficiale</th>
+                <th style="width: 15%">Durata</th>
+                <th style="width: 15%">Comando</th>
               </tr>
             </thead>
             <tbody>
-              <tr><td>Ammissione</td><td>Ammissione</td><td><span class="duration-badge duration-short">7d</span></td></tr>
-              <tr><td>Cheat trovato durante il controllo</td><td>Cheating SS</td><td><span class="duration-badge duration-medium">15d</span></td></tr>
-              <tr><td>Disabilitazione di Servizi Critici</td><td>Processi Disabilitati</td><td><span class="duration-badge duration-medium">10d</span></td></tr>
-              <tr><td>Cancellazione di Artefatti Forensi</td><td>Pulizia di Artefatti</td><td><span class="duration-badge duration-medium">12d</span></td></tr>
-              <tr><td>Manipolazione di Timestamp (Timestomping)</td><td>Alterazione di Prove</td><td><span class="duration-badge duration-long">20d</span></td></tr>
-              <tr><td>Manipolazione di Attributi (es. Read-Only)</td><td>Alterazione di Prove</td><td><span class="duration-badge duration-long">20d</span></td></tr>
-              <tr><td>Utilizzo di Partizioni/Drive per Occultamento</td><td>Occultamento di Prove</td><td><span class="duration-badge duration-long">20d</span></td></tr>
-              <tr><td>Rifiuto Esplicito del Controllo</td><td>Rifiuto</td><td><span class="duration-badge duration-medium">15d</span></td></tr>
-              <tr><td>Interruzione della Connessione Remota</td><td>Rifiuto + Stalling</td><td><span class="duration-badge duration-long">20d</span></td></tr>
-              <tr><td>Riavvio o Spegnimento non Autorizzato</td><td>Rifiuto + Stalling</td><td><span class="duration-badge duration-long">20d</span></td></tr>
-              <tr><td>Ostruzionismo Attivo/Passivo</td><td>Rifiuto + Stalling</td><td><span class="duration-badge duration-long">20d</span></td></tr>
-              <tr><td>Utilizzo di Ambienti Virtualizzati (VM)</td><td>Virtual Machine</td><td><span class="duration-badge duration-long">30d</span></td></tr>
-              <tr><td>Esecuzioni "Fileless"</td><td>Bypass Attempt</td><td><span class="duration-badge duration-long">30d</span></td></tr>
-              <tr><td>Utilizzo del Task Scheduler (per bypass)</td><td>Bypass Attempt</td><td><span class="duration-badge duration-long">30d</span></td></tr>
-              <tr><td>Utilizzo di ADS e WMIC (per bypass)</td><td>Bypass Attempt</td><td><span class="duration-badge duration-long">30d</span></td></tr>
-              <tr><td>Process Hollowing</td><td>Bypass Attempt</td><td><span class="duration-badge duration-long">30d</span></td></tr>
+              <tr>
+                  <td>Ammissione</td>
+                  <td>Ammissione</td>
+                  <td><span class="duration-badge duration-short">7d</span></td>
+                  <td><button class="btn-copy-cmd" onclick="copyBanCommand('7d', 'Ammissione')">Copia</button></td>
+              </tr>
+              <tr>
+                  <td>Cheat trovato durante il controllo</td>
+                  <td>Cheating SS</td>
+                  <td><span class="duration-badge duration-medium">15d</span></td>
+                  <td><button class="btn-copy-cmd" onclick="copyBanCommand('15d', 'Cheating SS')">Copia</button></td>
+              </tr>
+              <tr>
+                  <td>Disabilitazione di Servizi Critici</td>
+                  <td>Processi Disabilitati</td>
+                  <td><span class="duration-badge duration-medium">10d</span></td>
+                  <td><button class="btn-copy-cmd" onclick="copyBanCommand('10d', 'Processi Disabilitati')">Copia</button></td>
+              </tr>
+              <tr>
+                  <td>Cancellazione di Artefatti Forensi</td>
+                  <td>Pulizia di Artefatti</td>
+                  <td><span class="duration-badge duration-medium">12d</span></td>
+                  <td><button class="btn-copy-cmd" onclick="copyBanCommand('12d', 'Pulizia di Artefatti')">Copia</button></td>
+              </tr>
+              <tr>
+                  <td>Manipolazione di Timestamp (Timestomping)</td>
+                  <td>Alterazione di Prove</td>
+                  <td><span class="duration-badge duration-long">20d</span></td>
+                  <td><button class="btn-copy-cmd" onclick="copyBanCommand('20d', 'Alterazione di Prove')">Copia</button></td>
+              </tr>
+              <tr>
+                  <td>Manipolazione di Attributi (es. Read-Only)</td>
+                  <td>Alterazione di Prove</td>
+                  <td><span class="duration-badge duration-long">20d</span></td>
+                  <td><button class="btn-copy-cmd" onclick="copyBanCommand('20d', 'Alterazione di Prove')">Copia</button></td>
+              </tr>
+              <tr>
+                  <td>Utilizzo di Partizioni/Drive per Occultamento</td>
+                  <td>Occultamento di Prove</td>
+                  <td><span class="duration-badge duration-long">20d</span></td>
+                  <td><button class="btn-copy-cmd" onclick="copyBanCommand('20d', 'Occultamento di Prove')">Copia</button></td>
+              </tr>
+              <tr>
+                  <td>Rifiuto Esplicito del Controllo</td>
+                  <td>Rifiuto</td>
+                  <td><span class="duration-badge duration-medium">15d</span></td>
+                  <td><button class="btn-copy-cmd" onclick="copyBanCommand('15d', 'Rifiuto')">Copia</button></td>
+              </tr>
+              <tr>
+                  <td>Interruzione della Connessione Remota</td>
+                  <td>Rifiuto + Stalling</td>
+                  <td><span class="duration-badge duration-long">20d</span></td>
+                  <td><button class="btn-copy-cmd" onclick="copyBanCommand('20d', 'Rifiuto + Stalling')">Copia</button></td>
+              </tr>
+              <tr>
+                  <td>Riavvio o Spegnimento non Autorizzato</td>
+                  <td>Rifiuto + Stalling</td>
+                  <td><span class="duration-badge duration-long">20d</span></td>
+                  <td><button class="btn-copy-cmd" onclick="copyBanCommand('20d', 'Rifiuto + Stalling')">Copia</button></td>
+              </tr>
+              <tr>
+                  <td>Ostruzionismo Attivo/Passivo</td>
+                  <td>Rifiuto + Stalling</td>
+                  <td><span class="duration-badge duration-long">20d</span></td>
+                  <td><button class="btn-copy-cmd" onclick="copyBanCommand('20d', 'Rifiuto + Stalling')">Copia</button></td>
+              </tr>
+              <tr>
+                  <td>Utilizzo di Ambienti Virtualizzati (VM)</td>
+                  <td>Virtual Machine</td>
+                  <td><span class="duration-badge duration-long" style="background: #fee2e2; color: #b91c1c; border: 1px solid #b91c1c;">PERM</span></td>
+                  <td><button class="btn-copy-cmd" onclick="copyPermBanCommand('Virtual Machine')">Copia</button></td>
+              </tr>
+              <tr>
+                  <td>Esecuzioni "Fileless"</td>
+                  <td>Bypass Attempt</td>
+                  <td><span class="duration-badge duration-long" style="background: #fee2e2; color: #b91c1c; border: 1px solid #b91c1c;">PERM</span></td>
+                  <td><button class="btn-copy-cmd" onclick="copyPermBanCommand('Bypass Attempt')">Copia</button></td>
+              </tr>
+              <tr>
+                  <td>Utilizzo del Task Scheduler (per bypass)</td>
+                  <td>Bypass Attempt</td>
+                  <td><span class="duration-badge duration-long" style="background: #fee2e2; color: #b91c1c; border: 1px solid #b91c1c;">PERM</span></td>
+                  <td><button class="btn-copy-cmd" onclick="copyPermBanCommand('Bypass Attempt')">Copia</button></td>
+              </tr>
+              <tr>
+                  <td>Utilizzo di ADS e WMIC (per bypass)</td>
+                  <td>Bypass Attempt</td>
+                  <td><span class="duration-badge duration-long" style="background: #fee2e2; color: #b91c1c; border: 1px solid #b91c1c;">PERM</span></td>
+                  <td><button class="btn-copy-cmd" onclick="copyPermBanCommand('Bypass Attempt')">Copia</button></td>
+              </tr>
+              <tr>
+                  <td>Process Hollowing</td>
+                  <td>Bypass Attempt</td>
+                  <td><span class="duration-badge duration-long" style="background: #fee2e2; color: #b91c1c; border: 1px solid #b91c1c;">PERM</span></td>
+                  <td><button class="btn-copy-cmd" onclick="copyPermBanCommand('Bypass Attempt')">Copia</button></td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -1062,6 +1190,16 @@
         <p>
           Qualora un utente venga sanzionato per recidiva, la motivazione ufficiale nel report di ban deve seguire un formato specifico per garantirne la tracciabilità. Si utilizzerà la motivazione standard seguita dalla dicitura <strong>(Recidiva N)</strong>, dove N rappresenta il numero progressivo della recidiva per quella specifica categoria di infrazione.
         </p>
+
+        <h4 style="margin-top: 25px; margin-bottom: 10px; color: var(--text-primary);">🔍 Come controllo se un player è già stato punito?</h4>
+        <p>
+            Per verificare la cronologia delle sanzioni di un utente, è fondamentale consultare il registro ufficiale. Questo ti permetterà di applicare correttamente il principio di recidiva.
+        </p>
+        <div style="margin: 15px 0;">
+            <a href="https://ban.titanet.it" target="_blank" class="btn-tool btn-open" style="display: inline-flex; text-decoration: none;">
+                🌐 Controlla su Titanet Bans ↗
+            </a>
+        </div>
 
         <div class="motivation" style="border-left-color: #7c3aed;">
           <strong>Esempio Pratico:</strong><br>
@@ -1127,6 +1265,33 @@
             console.error("Errore durante la copia: ", err);
             showToast("❌ Errore durante la copia.");
           });
+      }
+
+      // Funzione specifica per copiare il comando del ban
+      function copyBanCommand(time, reason) {
+          const playerInput = document.getElementById('player-name');
+          let playerName = playerInput.value.trim();
+          
+          if (!playerName) {
+              playerName = "<player>";
+          }
+
+          const command = `/tempban ${playerName} ${time} (${reason}) -s`;
+          copyTextDirectly(command, `Comando copiato: ${command}`);
+      }
+
+      // Funzione per ban permanente
+      function copyPermBanCommand(reason) {
+          const playerInput = document.getElementById('player-name');
+          let playerName = playerInput.value.trim();
+          
+          if (!playerName) {
+              playerName = "<player>";
+          }
+
+          // /ban <player> (reason) -s
+          const command = `/ban ${playerName} (${reason}) -s`;
+          copyTextDirectly(command, `Comando copiato: ${command}`);
       }
     </script>
   </body>
