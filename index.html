@@ -371,6 +371,61 @@
       .btn-open { color: white !important; } 
       .btn-copy-link { color: var(--text-primary) !important; }
       .btn-copy-link:hover { color: var(--success-color) !important; }
+
+      /* --- INFRACTION TABLE --- */
+      .infraction-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        margin-top: 10px;
+        font-size: 0.95rem;
+      }
+      
+      .infraction-table th {
+        background: rgba(59, 130, 246, 0.1);
+        color: var(--text-primary);
+        font-weight: 600;
+        padding: 12px 16px;
+        text-align: left;
+      }
+      
+      .infraction-table th:first-child { border-top-left-radius: 12px; }
+      .infraction-table th:last-child { border-top-right-radius: 12px; }
+      
+      .infraction-table td {
+        padding: 12px 16px;
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+        color: var(--text-primary);
+        vertical-align: middle;
+      }
+      
+      .infraction-table tr:last-child td { border-bottom: none; }
+      
+      .infraction-table tr:hover td {
+        background-color: rgba(255, 255, 255, 0.4);
+      }
+      
+      .duration-badge {
+        display: inline-block;
+        padding: 4px 10px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-align: center;
+        min-width: 40px;
+      }
+      
+      .duration-short { background: #dcfce7; color: #166534; }  /* Green */
+      .duration-medium { background: #fef9c3; color: #854d0e; } /* Yellow/Amber */
+      .duration-long { background: #fee2e2; color: #991b1b; }   /* Red */
+      
+      .recidiva-box {
+          background: rgba(255,255,255,0.5);
+          border-left: 4px solid #8b5cf6; /* Violet */
+          padding: 15px;
+          border-radius: 8px;
+          margin: 15px 0;
+      }
     </style>
   </head>
   <body>
@@ -947,6 +1002,77 @@
         </div>
       </div>
     </div>
+      
+      <!-- SEZIONE TABELLA INFRAZIONI -->
+      <div class="section-title">
+        <h2>⚖️ Tabella delle Infrazioni</h2>
+      </div>
+
+      <div class="check-card">
+        <div style="overflow-x: auto;">
+          <table class="infraction-table">
+            <thead>
+              <tr>
+                <th style="width: 40%">Infrazione</th>
+                <th style="width: 40%">Motivazione Ufficiale</th>
+                <th style="width: 20%">Durata</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Ammissione</td><td>Ammissione</td><td><span class="duration-badge duration-short">7d</span></td></tr>
+              <tr><td>Cheat trovato durante il controllo</td><td>Cheating SS</td><td><span class="duration-badge duration-medium">15d</span></td></tr>
+              <tr><td>Disabilitazione di Servizi Critici</td><td>Processi Disabilitati</td><td><span class="duration-badge duration-medium">10d</span></td></tr>
+              <tr><td>Cancellazione di Artefatti Forensi</td><td>Pulizia di Artefatti</td><td><span class="duration-badge duration-medium">12d</span></td></tr>
+              <tr><td>Manipolazione di Timestamp (Timestomping)</td><td>Alterazione di Prove</td><td><span class="duration-badge duration-long">20d</span></td></tr>
+              <tr><td>Manipolazione di Attributi (es. Read-Only)</td><td>Alterazione di Prove</td><td><span class="duration-badge duration-long">20d</span></td></tr>
+              <tr><td>Utilizzo di Partizioni/Drive per Occultamento</td><td>Occultamento di Prove</td><td><span class="duration-badge duration-long">20d</span></td></tr>
+              <tr><td>Rifiuto Esplicito del Controllo</td><td>Rifiuto</td><td><span class="duration-badge duration-medium">15d</span></td></tr>
+              <tr><td>Interruzione della Connessione Remota</td><td>Rifiuto + Stalling</td><td><span class="duration-badge duration-long">20d</span></td></tr>
+              <tr><td>Riavvio o Spegnimento non Autorizzato</td><td>Rifiuto + Stalling</td><td><span class="duration-badge duration-long">20d</span></td></tr>
+              <tr><td>Ostruzionismo Attivo/Passivo</td><td>Rifiuto + Stalling</td><td><span class="duration-badge duration-long">20d</span></td></tr>
+              <tr><td>Utilizzo di Ambienti Virtualizzati (VM)</td><td>Virtual Machine</td><td><span class="duration-badge duration-long">30d</span></td></tr>
+              <tr><td>Esecuzioni "Fileless"</td><td>Bypass Attempt</td><td><span class="duration-badge duration-long">30d</span></td></tr>
+              <tr><td>Utilizzo del Task Scheduler (per bypass)</td><td>Bypass Attempt</td><td><span class="duration-badge duration-long">30d</span></td></tr>
+              <tr><td>Utilizzo di ADS e WMIC (per bypass)</td><td>Bypass Attempt</td><td><span class="duration-badge duration-long">30d</span></td></tr>
+              <tr><td>Process Hollowing</td><td>Bypass Attempt</td><td><span class="duration-badge duration-long">30d</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- SEZIONE RECIDIVA -->
+      <div class="section-title">
+        <h2>🔄 Principio di Recidiva</h2>
+      </div>
+
+      <div class="check-card">
+        <h3 class="card-title" style="margin-bottom: 10px;">Cos'è la Recidiva?</h3>
+        <p>
+          La recidiva si verifica quando un utente commette nuovamente un'infrazione dopo essere già stato sanzionato in passato per una violazione simile o correlata. Questo comportamento dimostra una mancata volontà di rispettare le regole e richiede un approccio sanzionatorio progressivo.
+        </p>
+
+        <div class="recidiva-box">
+          <h4 style="margin: 0 0 8px 0; color: #7c3aed;">📈 Aumento della Sanzione</h4>
+          <p style="margin: 0; font-size: 0.95rem;">
+            In caso di recidiva, la durata della sanzione standard, come definita in questa guida, verrà aumentata a discrezione del SS Management. L'entità dell'aumento dipenderà dalla gravità, dalla frequenza delle violazioni e dalla cronologia delle sanzioni precedenti del player.
+          </p>
+        </div>
+
+        <h4 style="margin-top: 25px; margin-bottom: 10px; color: var(--text-primary);">📝 Formattazione della Motivazione del Ban</h4>
+        <p>
+          Qualora un utente venga sanzionato per recidiva, la motivazione ufficiale nel report di ban deve seguire un formato specifico per garantirne la tracciabilità. Si utilizzerà la motivazione standard seguita dalla dicitura <strong>(Recidiva N)</strong>, dove N rappresenta il numero progressivo della recidiva per quella specifica categoria di infrazione.
+        </p>
+
+        <div class="motivation" style="border-left-color: #7c3aed;">
+          <strong>Esempio Pratico:</strong><br>
+          <ul style="margin: 10px 0 0 20px; padding: 0;">
+            <li>Primo Ban: <strong>Cheating (SS)</strong></li>
+            <li>Secondo Ban (stesso motivo): <strong>Cheating (SS) (Recidiva 1)</strong></li>
+            <li>Terzo Ban: <strong>Cheating (SS) (Recidiva 2)</strong></li>
+          </ul>
+        </div>
+      </div>
+    </div>
 
     <div id="toast">
       <span style="font-size: 1.2em">✅</span>
@@ -1005,7 +1131,3 @@
     </script>
   </body>
 </html>
-
-
-
-
