@@ -1,0 +1,1007 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GENERAL CHECKS 1.21+ - Glass Light Edition</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --text-primary: #1e293b; /* Slate 800 */
+        --text-secondary: #64748b; /* Slate 500 */
+        --accent-color: #3b82f6; /* Blue 500 */
+        --success-color: #10b981; /* Emerald 500 */
+        --card-bg: rgba(255, 255, 255, 0.65);
+        --card-border: rgba(255, 255, 255, 0.4);
+        --card-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+        --code-bg: #1e293b; /* Keep dark code blocks for contrast */
+        --code-text: #e2e8f0;
+        --nav-bg: rgba(255, 255, 255, 0.8);
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        /* Subtle Neutral/Light Gradient */
+        background: linear-gradient(135deg, #eef2f3 0%, #dbe6f6 100%); 
+        background-attachment: fixed;
+        color: var(--text-primary);
+        line-height: 1.6;
+        margin: 0;
+        padding: 40px 20px;
+        min-height: 100vh;
+      }
+
+      .main-container {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      /* Header Principale */
+      .main-header {
+        text-align: center;
+        margin-bottom: 50px;
+        padding: 40px;
+        background: var(--nav-bg);
+        box-shadow: var(--card-shadow);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border-radius: 24px;
+        border: 1px solid var(--card-border);
+      }
+
+      .main-header h1 {
+        margin: 0;
+        font-size: 2.5rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        color: var(--text-primary);
+      }
+      
+      .main-header p {
+          color: var(--text-secondary);
+      }
+
+      /* Titoli Sezioni Extra */
+      .section-title {
+        margin-top: 60px;
+        margin-bottom: 30px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid rgba(0,0,0,0.05); /* Very subtle divider */
+      }
+
+      .section-title h2 {
+        margin: 0;
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      /* Stile delle "Card" */
+      .check-card {
+        background: var(--card-bg);
+        box-shadow: var(--card-shadow);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-radius: 20px;
+        border: 1px solid var(--card-border);
+        padding: 30px;
+        margin-bottom: 25px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .check-card:hover {
+        transform: translateY(-5px);
+        background: rgba(255, 255, 255, 0.85);
+        box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.12);
+      }
+
+      /* Header interno alla card */
+      .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+
+      .card-title {
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--text-primary);
+      }
+
+      .card-emoji {
+        font-size: 1.5rem;
+        filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+      }
+
+      .motivation {
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+        background: rgba(255, 255, 255, 0.5);
+        padding: 15px;
+        margin: 15px 0;
+        border-radius: 12px;
+        border-left: 4px solid var(--accent-color);
+        box-shadow: inset 0 1px 2px rgba(0,0,0,0.03);
+      }
+      
+      .motivation strong {
+          color: var(--accent-color);
+      }
+
+      /* --- BOTTONI AZIONE TOOL --- */
+      .tool-actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .btn-tool {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 16px;
+        border-radius: 50px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s;
+        border: 1px solid rgba(0,0,0,0.05);
+        backdrop-filter: blur(4px);
+      }
+
+      .btn-open {
+        background: var(--text-primary); /* Dark button for primary action */
+        color: white;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      }
+
+      .btn-open:hover {
+        background-color: var(--accent-color);
+        color: white;
+        box-shadow: 0 6px 12px rgba(59, 130, 246, 0.3); /* Blue glow */
+      }
+
+      .btn-copy-link {
+          background: white;
+          color: var(--text-primary);
+          border-color: rgba(0,0,0,0.1);
+      }
+
+      .btn-copy-link:hover {
+        background-color: #f1f5f9;
+        color: var(--success-color);
+        border-color: var(--success-color);
+        box-shadow: 0 0 10px rgba(16, 185, 129, 0.2);
+      }
+
+      /* --- BLOCCO CODICE POWERSHELL --- */
+      .code-container {
+        position: relative;
+        margin: 20px 0;
+      }
+
+      .code-block-dark {
+        display: block;
+        background-color: var(--code-bg);
+        color: var(--code-text);
+        padding: 20px;
+        padding-top: 45px;
+        border-radius: 15px;
+        overflow-x: auto;
+        font-family: "Consolas", monospace;
+        font-size: 0.9rem;
+        border: 1px solid rgba(0,0,0,0.1);
+        white-space: pre-wrap;
+        word-break: break-all;
+        box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+      }
+
+      .btn-copy-code {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: rgba(255, 255, 255, 0.1); /* Transparent on dark code bg */
+        color: #e2e8f0;
+        border: 1px solid rgba(255,255,255,0.2);
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        cursor: pointer;
+        transition: all 0.2s;
+        backdrop-filter: blur(4px);
+      }
+
+      .btn-copy-code:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        color: white;
+      }
+
+      /* --- LISTE E REGEX --- */
+      .styled-list li {
+        margin-bottom: 12px;
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+        padding-bottom: 8px;
+        color: var(--text-primary);
+      }
+      .styled-list li:last-child {
+          border-bottom: none;
+      }
+
+      .list-category {
+        font-weight: 700;
+        color: var(--accent-color);
+        display: inline-block;
+        margin-bottom: 4px;
+        text-shadow: none;
+      }
+
+      /* Regex Pillole cliccabili */
+      .regex-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background-color: white;
+        color: var(--text-primary);
+        padding: 6px 12px;
+        border-radius: 8px;
+        font-family: monospace;
+        font-size: 0.85em;
+        cursor: pointer;
+        border: 1px solid rgba(0,0,0,0.1);
+        transition: all 0.2s;
+        word-break: break-all;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+      }
+
+      .regex-pill:hover {
+        background-color: #f8fafc;
+        transform: scale(1.02);
+        border-color: var(--text-secondary);
+      }
+
+      .pill-icon {
+        font-size: 1.1em;
+        opacity: 0.8;
+      }
+
+      /* --- CARD BONUS --- */
+      .bonus-card {
+        background: linear-gradient(135deg, rgba(255, 251, 235, 0.8), rgba(255, 255, 255, 0.6));
+        border: 1px solid rgba(252, 211, 77, 0.4);
+      }
+      .bonus-card .card-title {
+        color: #b45309; /* Deep Amber */
+        text-shadow: none;
+      }
+      .bonus-card .motivation {
+          background-color: #fffbeb;
+      }
+
+      /* --- TOAST NOTIFICATION --- */
+      #toast {
+        visibility: hidden;
+        min-width: 250px;
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(10px);
+        color: var(--text-primary);
+        text-align: center;
+        border-radius: 50px;
+        padding: 16px;
+        position: fixed;
+        z-index: 1000;
+        left: 50%;
+        bottom: 40px;
+        transform: translateX(-50%) translateY(20px);
+        font-size: 1rem;
+        font-weight: 500;
+        opacity: 0;
+        transition: all 0.3s;
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        border: 1px solid rgba(0,0,0,0.05);
+      }
+
+      #toast.show {
+        visibility: visible;
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+
+      /* --- TITANET STYLES --- */
+      .titanet-highlight {
+        color: #a16207; /* Dark Yellow/Gold for readability on light bg */
+        background-color: #fef08a; /* Soft Yellow Highlight */
+        padding: 0 6px;
+        border-radius: 4px;
+        font-weight: 700;
+        text-shadow: none;
+      }
+
+      .titanet-blue {
+        color: var(--accent-color);
+        font-weight: 700;
+        text-shadow: none;
+      }
+
+      .btn-detect {
+        background: rgba(16, 185, 129, 0.1);
+        color: #059669; /* Darker Green text */
+        border-color: #10b981;
+      }
+
+      .btn-detect:hover {
+        background-color: #10b981;
+        color: white;
+        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+      }
+      
+      a {
+          color: var(--accent-color);
+          text-decoration: underline;
+          text-decoration-color: rgba(59, 130, 246, 0.3);
+          text-underline-offset: 3px;
+          font-weight: 500;
+      }
+      a:hover {
+          text-decoration-color: var(--accent-color);
+          text-shadow: 0 0 10px rgba(59, 130, 246, 0.2);
+      }
+      a.btn-tool {
+          text-decoration: none;
+          color: inherit;
+      }
+      /* Specific override for link inside generic button */
+      .btn-open { color: white !important; } 
+      .btn-copy-link { color: var(--text-primary) !important; }
+      .btn-copy-link:hover { color: var(--success-color) !important; }
+    </style>
+  </head>
+  <body>
+    <div class="main-container">
+      <header class="main-header">
+        <h1>
+          🛡️ <span class="titanet-highlight">Titanet</span> <span class="titanet-blue">Quick SS Check</span>
+        </h1>
+        <div style="margin-top: 20px; font-size: 1rem; color: var(--text-secondary); font-weight: 500; font-style: italic; max-width: 90%; margin-left: auto; margin-right: auto; line-height: 1.5;">
+            <p style="margin: 0;">
+                Questo documento non è una guida rigida da seguire alla lettera, ma uno schema ottimizzato per condurre controlli SS su Minecraft 1.21+ in modo rapido ed efficace.
+                <br><br>
+                Seguendo questi passaggi riuscirete a individuare la maggior parte dei cheater su Titanet in poco tempo.
+                Tuttavia, ogni controllo è unico: variazioni e adattamenti basati sulle tracce rilevate sono non solo normali, ma necessari.
+            </p>
+        </div>
+      </header>
+
+      <!-- SEZIONE INFO GENERALI -->
+      <div class="section-title" style="margin-top: 0">
+        <h2>ℹ️ Info Generali</h2>
+      </div>
+
+      <div class="check-card">
+        <h3 class="card-title" style="margin-bottom: 15px">
+          Preparazione al controllo
+        </h3>
+        <ul class="styled-list">
+          <li>
+            <span class="list-category">Dashboard (Obbligatorio):</span> Appena portato un player in controllo, ancor prima di scrivergli, fai screenshot a tutto schermo di Minecraft dove si veda bene la Dashboard.
+          </li>
+          <li>
+            <span class="list-category">VPN (consigliato):</span> Attiva una VPN per proteggere il tuo indirizzo IP da possibili IP-Grabber.
+          </li>
+          <li>
+            <span class="list-category">Registrazione (Obbligatorio):</span> Avvia la registrazione dello schermo subito prima di inviargli la richiesta di connessione su anydesk.
+          </li>
+        </ul>
+      </div>
+
+      <div class="section-title">
+        <h2>
+          🔍 Passaggi
+        </h2>
+      </div>
+
+      <div class="check-card">
+        <div class="card-header">
+          <h2 class="card-title">
+            <span class="card-emoji">📜</span> 1. Script per Check Generici
+          </h2>
+        </div>
+
+        <div class="code-container">
+          <button class="btn-copy-code" onclick="copyText('script-1', this)">
+            Copia Script 📋
+          </button>
+          <code id="script-1" class="code-block-dark">Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass; iex (iwr 'https://raw.githubusercontent.com/praiselily/lilith-ps/main/Services.ps1')</code>
+        </div>
+
+        <div class="motivation">
+          <strong>Motivazione:</strong>
+          <em
+            >Tramite questo script si riesce in pochissimi secondi ad ottenere molte informazioni utili sul sistema. Questo passaggio può essere omesso se utilizzi un SS Tool</em
+          >
+        </div>
+        <p style="font-size: 0.9em; color: var(--text-secondary)">
+          Link di riferimento:
+          <a
+            href="https://raw.githubusercontent.com/praiselily/lilith-ps/refs/heads/main/Services.ps1"
+            target="_blank"
+            style="color: var(--accent-color)"
+            >Services.ps1 (Source)</a
+          >
+        </p>
+      </div>
+
+      <!-- NUOVI PARAGRAFI: SS TOOL AUTOMATICO & XRAY -->
+      <div class="check-card">
+        <div class="card-header">
+          <h2 class="card-title">
+            <span class="card-emoji">🤖</span> SS Tool Automatico (consigliato)
+          </h2>
+          <div class="tool-actions">
+            <a href="#" target="_blank" class="btn-tool btn-detect" style="color: #059669;"
+              >Detect.ac ↗</a
+            >
+          </div>
+        </div>
+        <p>
+          Per velocizzare il controllo e per far risparmiare tempo sia a te che
+          al player, è altamente consigliato utilizzare un SS Tool
+          Automatico.<br />
+          Nel mentre che il tool farà lo scan, vai avanti con il controllo, e
+          controlla i risultati una volta finito lo scan.
+        </p>
+      </div>
+
+      <div class="check-card">
+        <div class="card-header">
+          <h2 class="card-title">
+            <span class="card-emoji">💎</span> Controlla Xray Texturepack
+          </h2>
+        </div>
+        <p>
+          Controlla se il player ha all'interno della cartella delle texturepack
+          l'Xray o se la ha recentemente rimossa.<br />
+          Il Ban per possesso di Xray vale sia che il player stia giocando la
+          Survival, sia che stia giocando in altre modalità.
+        </p>
+      </div>
+
+      <div class="check-card">
+        <div class="card-header">
+          <h2 class="card-title">
+            <span class="card-emoji">🧰</span> 2. RedLotus Tool Downloader
+          </h2>
+          <div class="tool-actions">
+            <a
+              href="https://github.com/ItzIceHere/RedLotus-Tool-Downloader/releases/download/RL/RedLotus.Downloader.exe"
+              target="_blank"
+              class="btn-tool btn-open"
+              >Apri ↗</a
+            >
+            <button
+              class="btn-tool btn-copy-link"
+              onclick="
+                copyTextDirectly(
+                  'https://github.com/ItzIceHere/RedLotus-Tool-Downloader/releases/download/RL/RedLotus.Downloader.exe',
+                  'Link download copiato! 🔗',
+                )
+              "
+            >
+              Copia Link 🔗
+            </button>
+          </div>
+        </div>
+        <div class="motivation">
+          <strong>Motivazione:</strong>
+          <em
+            >Ti permette di scaricare in pochi secondi tutti i tool che ti serviranno per il controllo. Ci permette quindi di ottimizzare al meglio il tempo e avere fin da subito a disposizione tutti gli strumenti che ci serviranno a portata di mano.</em
+          >
+        </div>
+      </div>
+
+      <div class="check-card">
+        <div class="card-header">
+          <h2 class="card-title">
+            <span class="card-emoji">🧊</span> 3. RedLotus Mod Analyzer
+          </h2>
+          <div class="tool-actions">
+            <a
+              href="https://github.com/ItzIceHere/RedLotus-Mod-Analyzer/releases/download/RL/RedLotusModAnalyzer.exe"
+              target="_blank"
+              class="btn-tool btn-open"
+              >Apri ↗</a
+            >
+            <button
+              class="btn-tool btn-copy-link"
+              onclick="
+                copyTextDirectly(
+                  'https://github.com/ItzIceHere/RedLotus-Mod-Analyzer/releases/download/RL/RedLotusModAnalyzer.exe',
+                  'Link download copiato! 🔗',
+                )
+              "
+            >
+              Copia Link 🔗
+            </button>
+          </div>
+        </div>
+        <p>
+            Questo tool automaticamente eseguirà molti check per verificare se delle determinate mod sono legit o meno. É sempre obbligatorio controllare manualmente la mod sospetta.<br>
+            Consiglio inoltre di usare la funzione "Memory Scan" cosi che sia il tool stesso a recuperare esattamente la lista delle mod in utilizzo dal processo.
+        </p>
+      </div>
+
+      <div class="check-card">
+        <div class="card-header">
+          <h2 class="card-title">
+            <span class="card-emoji">🔎</span> 4. Spok's BAM Parser & Deleted
+            Key
+          </h2>
+        </div>
+        <div style="margin-bottom: 15px">
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              margin-bottom: 8px;
+              flex-wrap: wrap;
+              gap: 10px;
+            "
+          >
+            <strong>👉 Spok's BAM Parser</strong>
+            <div class="tool-actions">
+              <a
+                href="https://github.com/spokwn/BAM-parser/releases"
+                target="_blank"
+                class="btn-tool btn-open"
+                >Apri ↗</a
+              >
+              <button
+                class="btn-tool btn-copy-link"
+                onclick="
+                  copyTextDirectly(
+                    'https://github.com/spokwn/BAM-parser/releases',
+                    'Link BAM Parser copiato! 🔗',
+                  )
+                "
+              >
+                Copia Link 🔗
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          style="
+            margin-bottom: 15px;
+            border-top: 1px dashed var(--card-border);
+            padding-top: 15px;
+          "
+        >
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              margin-bottom: 8px;
+              flex-wrap: wrap;
+              gap: 10px;
+            "
+          >
+            <strong>👉 BAM Deleted Keys</strong>
+            <div class="tool-actions">
+              <a
+                href="https://github.com/spokwn/BamDeletedKeys/releases"
+                target="_blank"
+                class="btn-tool btn-open"
+                >Apri ↗</a
+              >
+              <button
+                class="btn-tool btn-copy-link"
+                onclick="
+                  copyTextDirectly(
+                    'https://github.com/spokwn/BamDeletedKeys/releases',
+                    'Link Deleted Keys copiato! 🔗',
+                  )
+                "
+              >
+                Copia Link 🔗
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="motivation">
+          <strong>Motivazione:</strong>
+          <em
+            >Ci permette in pochissimo tempo di controllare eventuali programmi
+            aperti e/o chiusi dal player. Con i suoi check avanzati inoltre
+            velocizza il processo di controllo di file sospetti. L'integrazione
+            con il Journal ci permette di capire se un eventuale programma è
+            stato eliminato, sostituito, modificato.</em
+          >
+        </div>
+      </div>
+
+      <div class="check-card">
+        <div class="card-header">
+          <h2 class="card-title">
+            <span class="card-emoji">🧠</span> 5. Spok's Prefetch Parser
+          </h2>
+          <div class="tool-actions">
+            <a
+              href="https://github.com/spokwn/prefetch-parser/releases"
+              target="_blank"
+              class="btn-tool btn-open"
+              >Apri ↗</a
+            >
+            <button
+              class="btn-tool btn-copy-link"
+              onclick="
+                copyTextDirectly(
+                  'https://github.com/spokwn/prefetch-parser/releases',
+                  'Link Prefetch copiato! 🔗',
+                )
+              "
+            >
+              Copia Link 🔗
+            </button>
+          </div>
+        </div>
+        <div class="motivation">
+          <strong>Motivazione:</strong>
+          <em
+            >Ci permette in pochissimo tempo di controllare eventuali programmi
+            aperti / bypass effettuati dal player. Con i suoi check avanzati
+            inoltre velocizza il processo di controllo di file sospetti.
+            L'integrazione con il Journal ci permette di capire se un eventuale
+            programma è stato eliminato, sostituito, modificato.</em
+          >
+        </div>
+      </div>
+
+      <div class="check-card">
+        <div class="card-header">
+          <h2 class="card-title">
+            <span class="card-emoji">🕵️‍♂️</span> 6. System Informer & Path Parser
+            Analysis
+          </h2>
+          <div class="tool-actions">
+            <button
+              class="btn-tool btn-copy-link"
+              onclick="
+                copyTextDirectly(
+                  'https://systeminformer.sourceforge.io/',
+                  'Link SI copiato! 🔗',
+                )
+              "
+              title="Copia link System Informer"
+              >SI 🔗</button
+            >
+            <button
+              class="btn-tool btn-copy-link"
+              onclick="
+                copyTextDirectly(
+                  'https://github.com/spokwn/PathsParser/releases',
+                  'Link PP copiato! 🔗',
+                )
+              "
+              title="Copia link Path Parser"
+              >PP 🔗</button
+            >
+          </div>
+        </div>
+        <ul class="styled-list">
+          <li>
+            <span class="list-category">Controllo degli EXE:</span>
+            CSRSS con meno Private Bytes con Regex:
+            <span
+              class="regex-pill"
+              onclick="
+                copyTextDirectly(
+                  '^(?:\\\\\\\\?\\\\)?[A-Za-z]:\\\\.+\\\\.exe$',
+                  'Regex EXE copiata!',
+                )
+              "
+              title="Clicca per copiare"
+              ><span class="pill-icon">📄</span>
+              ^(?:\\\\\?\\)?[A-Za-z]:\\.+\.exe$</span
+            >
+          </li>
+          <li>
+            <span class="list-category">Controllo dei DLL:</span>
+            CSRSS con più Private Bytes con Regex:
+            <span
+              class="regex-pill"
+              onclick="
+                copyTextDirectly(
+                  '^(?:\\\\\\\\?\\\\)?[A-Za-z]:\\\\.+$',
+                  'Regex DLL copiata!',
+                )
+              "
+              title="Clicca per copiare"
+              ><span class="pill-icon">🧩</span>
+              ^(?:\\\\\?\\)?[A-Za-z]:\\.+$</span
+            >
+          </li>
+          <li>
+            <span class="list-category"
+              >Controllo delle estensioni Spoofate:</span
+            >
+            CSRSS con più Private Bytes con Regex:
+            <span
+              class="regex-pill"
+              onclick="
+                copyTextDirectly(
+                  '^(?:\\\\\\\\?\\\\)?[A-Za-z]:\\\\.+$',
+                  'Regex Spoof copiata!',
+                )
+              "
+              title="Clicca per copiare"
+              ><span class="pill-icon">🎭</span>
+              ^(?:\\\\\?\\)?[A-Za-z]:\\.+$</span
+            >
+          </li>
+          <li>
+            <span class="list-category">Controllo dei Jar (Filtri):</span>
+            PlugPlay:
+            <span
+              class="regex-pill"
+              onclick="copyTextDirectly('jar', 'Filtro jar copiato!')"
+              ><span class="pill-icon">☕</span> jar</span
+            >
+            — PcaSvc:
+            <span
+              class="regex-pill"
+              onclick="copyTextDirectly('jar', 'Filtro jar copiato!')"
+              ><span class="pill-icon">☕</span> jar</span
+            >
+          </li>
+        </ul>
+      </div>
+
+      <div class="check-card">
+        <div class="card-header">
+          <h2 class="card-title">
+            <span class="card-emoji">📓</span> 7. Journal Trace
+          </h2>
+          <div class="tool-actions">
+            <a
+              href="https://github.com/spokwn/JournalTrace/releases"
+              target="_blank"
+              class="btn-tool btn-open"
+              >Apri ↗</a
+            >
+            <button
+              class="btn-tool btn-copy-link"
+              onclick="
+                copyTextDirectly(
+                  'https://github.com/spokwn/JournalTrace/releases',
+                  'Link Journal copiato! 🔗',
+                )
+              "
+            >
+              Copia Link 🔗
+            </button>
+          </div>
+        </div>
+        <p>
+          <em
+            >Questo controllo dovrebbe essere già stato fatto attraverso i tool
+            di Spok, ma per sicurezza ricontrollerei comunque eventuali file
+            eliminato o sostituiti/modificati.</em
+          >
+        </p>
+        <p>
+          <strong>Cosa cercare:</strong> Deleted, Overwritten, Data Truncation,
+          Data Overwrite, Basic Info Change.
+        </p>
+      </div>
+
+      <div class="check-card bonus-card">
+        <div class="card-header">
+          <h2 class="card-title">
+            <span class="card-emoji">⭐</span> Bonus: Spok Utility Tool
+          </h2>
+          <div class="tool-actions">
+            <a
+              href="https://github.com/spokwn/Tool/releases"
+              target="_blank"
+              class="btn-tool btn-open"
+              style="color: white; border-color: #f59e0b; background-color: #f59e0b;"
+              >Apri ↗</a
+            >
+            <button
+              class="btn-tool btn-copy-link"
+              onclick="
+                copyTextDirectly(
+                  'https://github.com/spokwn/Tool/releases',
+                  'Link Utility Tool copiato! 🔗',
+                )
+              "
+              style="color: #fbbf24; border-color: #fbbf24;"
+            >
+              Copia Link 🔗
+            </button>
+          </div>
+        </div>
+        <p>
+          <em
+            >Questo tool permette di fare alcuni check in poco tempo e può
+            risultare utile durante alcuni controlli.</em
+          >
+        </p>
+        <div
+          class="motivation"
+          style="border-left-color: #f59e0b;"
+        >
+          <strong>Funzionalità:</strong>
+          <em
+            >Controlla il cambio di orario (controllo più robusto rispetto allo
+            script), controlla dei dump di servizi per eventuali unicode
+            strings, controlla gli alt di minecraft, mostra l'HWID di un player,
+            mostra l'orario di avvio dei vari servizi.</em
+          >
+        </div>
+      </div>
+
+      <div class="section-title">
+        <h2>📁 Controlli Log</h2>
+      </div>
+
+      <div class="check-card">
+        <div class="card-header">
+          <h2 class="card-title">
+            <span class="card-emoji">👥</span> RedLotus Alt Checker
+          </h2>
+          <div class="tool-actions">
+            <a
+              href="https://github.com/ItzIceHere/RedLotusAltChecker/releases/download/RL/RedLotusAltChecker.exe"
+              target="_blank"
+              class="btn-tool btn-open"
+              >Apri ↗</a
+            >
+            <button
+              class="btn-tool btn-copy-link"
+              onclick="
+                copyTextDirectly(
+                  'https://github.com/ItzIceHere/RedLotusAltChecker/releases/download/RL/RedLotusAltChecker.exe',
+                  'Link Alt Checker copiato! 🔗',
+                )
+              "
+            >
+              Copia Link 🔗
+            </button>
+          </div>
+        </div>
+        <p>
+          Un tool automatico che ti permette di fare i controlli log in pochi
+          secondi.<br />
+          Apri, esegui uno scan con la funzione che preferisci e ottieni
+          informazioni relativi agli alt.
+        </p>
+        <div class="motivation">
+          <strong>Integrazione Journal:</strong>
+          <em
+            >Ci sono inoltre già integrati i check del Journal per assicurarsi
+            che le traccie non siano state manomesse o rimosse
+            completamente.</em
+          >
+        </div>
+      </div>
+
+      <!-- SEZIONE DOPO IL CONTROLLO -->
+      <div class="section-title">
+        <h2>🏁 Dopo il controllo</h2>
+      </div>
+
+      <div class="check-card">
+        <h3 class="card-title" style="margin-bottom: 15px">Cleanup e Report</h3>
+        <p>
+          Elimina i vari tool scaricati ed eventuali file creati da te. Lascia quindi il PC nello stesso stato prima della tua connessione.
+        </p>
+
+        <hr
+          style="
+            border: 0;
+            border-top: 1px solid var(--card-border);
+            margin: 20px 0;
+          "
+        />
+
+        <p><strong>Compila il report con questo format:</strong></p>
+        <div class="code-container">
+          <button
+            class="btn-copy-code"
+            onclick="copyText('report-format', this)"
+          >
+            Copia Report 📋
+          </button>
+          <code
+            id="report-format"
+            class="code-block-dark"
+            style="white-space: pre"
+            >🖥️ Screensharer: 
+🕵️‍♂️ Sospettato: 
+⏳ Durata ban: 
+📋 Motivazione del ban: 
+🖼️ Prove (link foto): 
+🗒️ Note (opzionale):</code
+          >
+        </div>
+      </div>
+    </div>
+
+    <div id="toast">
+      <span style="font-size: 1.2em">✅</span>
+      <span id="toast-msg">Copiato!</span>
+    </div>
+
+    <script>
+      // Funzione per mostrare il popup di notifica
+      function showToast(message) {
+        const toast = document.getElementById("toast");
+        const toastMsg = document.getElementById("toast-msg");
+        toastMsg.innerText = message || "Copiato negli appunti!";
+        toast.className = "show";
+        setTimeout(function () {
+          toast.className = toast.className.replace("show", "");
+        }, 2500);
+      }
+
+      // Funzione per copiare il testo interno di un elemento
+      function copyText(elementId, btnElement) {
+        const textToCopy = document.getElementById(elementId).innerText;
+        navigator.clipboard
+          .writeText(textToCopy)
+          .then(() => {
+            const originalText = btnElement.innerText;
+            btnElement.innerHTML = "Copiato! ✅";
+            btnElement.style.color = "#00ff9d";
+            btnElement.style.borderColor = "#00ff9d";
+
+            showToast("Script copiato con successo!");
+
+            setTimeout(() => {
+              btnElement.innerText = originalText;
+              btnElement.style.color = "";
+              btnElement.style.borderColor = "";
+            }, 2000);
+          })
+          .catch((err) => {
+            console.error("Errore durante la copia: ", err);
+            showToast("❌ Errore durante la copia.");
+          });
+      }
+
+      // Funzione per copiare una stringa passata direttamente
+      function copyTextDirectly(text, toastMsg) {
+        navigator.clipboard
+          .writeText(text)
+          .then(() => {
+            showToast(toastMsg);
+          })
+          .catch((err) => {
+            console.error("Errore durante la copia: ", err);
+            showToast("❌ Errore durante la copia.");
+          });
+      }
+    </script>
+  </body>
+</html>
