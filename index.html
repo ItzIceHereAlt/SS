@@ -315,10 +315,6 @@
         border-radius: 8px;
         font-family: monospace;
         font-size: 0.85em;
-        padding: 6px 12px;
-        border-radius: 8px;
-        font-family: monospace;
-        font-size: 0.85em;
         cursor: default;
         border: 1px solid rgba(0,0,0,0.1);
         transition: all 0.2s;
@@ -331,7 +327,6 @@
         -webkit-user-select: all;
         cursor: text;
       }
-
 
       .regex-pill:hover {
         background-color: var(--btn-copy-hover-bg);
@@ -356,6 +351,24 @@
       }
       .bonus-card .motivation {
           background-color: rgba(255, 251, 235, 0.1);
+      }
+
+      /* --- SEZIONI ALTERNATIVE (Non Consigliate) --- */
+      .alt-container {
+        margin-top: 20px;
+        padding: 15px;
+        background: rgba(148, 163, 184, 0.1); /* Sfondo grigino/trasparente */
+        border-left: 4px solid #94a3b8; /* Bordo grigio */
+        border-radius: 12px;
+      }
+      .alt-title {
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+        font-weight: 600;
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
       }
 
       /* --- TOAST NOTIFICATION --- */
@@ -524,8 +537,6 @@
           outline: none;
       }
 
-
-      
       .btn-copy-cmd {
           background: var(--btn-secondary-bg);
           color: var(--btn-secondary-text);
@@ -601,7 +612,6 @@
         </div>
       </header>
       
-      <!-- Pulsante Toggle Theme -->
       <button class="theme-toggle-btn" id="theme-toggle" aria-label="Attiva Dark Mode" onclick="toggleTheme()">
           <span class="icon-sun">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -615,8 +625,7 @@
           </span>
       </button>
 
-      <!-- SEZIONE INFO GENERALI -->
-<div class="section-title" style="margin-top: 0">
+      <div class="section-title" style="margin-top: 0">
         <h2>ℹ️ Info Generali</h2>
       </div>
 
@@ -674,7 +683,6 @@
         </p>
       </div>
 
-      <!-- NUOVI PARAGRAFI: SS TOOL AUTOMATICO & XRAY -->
       <div class="check-card">
         <div class="card-header">
           <h2 class="card-title">
@@ -863,7 +871,20 @@
             stato eliminato, sostituito, modificato.</em
           >
         </div>
-      </div>
+
+        <div class="alt-container">
+          <div class="alt-title">
+            ⚠️ RedLotus BAM Parser (alternativa meno potente a Spok's BAM)
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0;">Un'alternativa non consigliata se non in casi specifici in cui il tool principale non sia utilizzabile.</p>
+          <div class="code-container" style="margin: 10px 0 0 0;">
+            <button class="btn-copy-code" onclick="copyText('script-rl-bam', this)">
+              Copia Script 📋
+            </button>
+            <code id="script-rl-bam" class="code-block-dark" style="padding-top: 35px;">powershell Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass && powershell Invoke-Expression (Invoke-RestMethod https://raw.githubusercontent.com/PureIntent/ScreenShare/main/RedLotusBam.ps1)</code>
+          </div>
+        </div>
+        </div>
 
       <div class="check-card">
         <div class="card-header">
@@ -1002,7 +1023,20 @@
             >
           </li>
         </ul>
-      </div>
+
+        <div class="alt-container">
+          <div class="alt-title">
+            ⚠️ RedLotus Path Parser (alternativa a Spok's Path Parser)
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0;">Un'alternativa non consigliata da affiancare all'uso di Path Parser se lo strumento principale non è disponibile.</p>
+          <div class="code-container" style="margin: 10px 0 0 0;">
+            <button class="btn-copy-code" onclick="copyText('script-rl-path', this)">
+              Copia Script 📋
+            </button>
+            <code id="script-rl-path" class="code-block-dark" style="padding-top: 35px;">powershell Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass && powershell Invoke-Expression (Invoke-RestMethod https://raw.githubusercontent.com/bacanoicua/Screenshare/main/RedLotusSignatures.ps1)</code>
+          </div>
+        </div>
+        </div>
 
       <div class="check-card">
         <div class="card-header">
@@ -1134,7 +1168,6 @@
         </div>
       </div>
 
-      <!-- SEZIONE DOPO IL CONTROLLO -->
       <div class="section-title">
         <h2>🏁 Dopo il controllo</h2>
       </div>
@@ -1175,7 +1208,6 @@
       </div>
     </div>
       
-      <!-- SEZIONE TABELLA INFRAZIONI -->
       <div class="section-title">
         <h2>⚖️ Tabella delle Infrazioni</h2>
       </div>
@@ -1305,7 +1337,6 @@
         </div>
       </div>
 
-      <!-- SEZIONE RECIDIVA -->
       <div class="section-title">
         <h2>🔄 Principio di Recidiva</h2>
       </div>
