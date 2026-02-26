@@ -594,6 +594,73 @@
       [data-theme="dark"] .theme-toggle-btn .icon-sun { display: none; }
       [data-theme="dark"] .theme-toggle-btn .icon-moon { display: block; color: #cbd5e1; }
 
+      /* --- MACRO CATEGORIES --- */
+      .category-header {
+        text-align: center;
+        padding: 30px;
+        margin: 60px 0 30px 0;
+        border-radius: 20px;
+        color: white;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      }
+      .category-header h1 {
+        margin: 0;
+        font-size: 2.2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+      }
+      .category-header p {
+        margin: 10px 0 0 0;
+        opacity: 0.9;
+        font-weight: 500;
+        font-size: 1rem;
+      }
+      .hack-header {
+        background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
+        border: 1px solid rgba(255,255,255,0.2);
+      }
+      .log-header {
+        background: linear-gradient(135deg, #6366f1 0%, #4338ca 100%); /* Indigo tint */
+        border: 1px solid rgba(255,255,255,0.2);
+      }
+      .after-header {
+        background: linear-gradient(135deg, #10b981 0%, #047857 100%); /* Emerald/Green tint */
+        border: 1px solid rgba(255,255,255,0.2);
+      }
+      
+      .hack-card {
+        border-top: 4px solid #ef4444;
+      }
+      .log-card {
+        border-top: 4px solid #6366f1;
+      }
+      .after-card {
+        border-top: 4px solid #10b981;
+      }
+
+      [data-theme="dark"] .hack-header {
+        background: linear-gradient(135deg, #7f1d1d 0%, #450a0a 100%);
+        border-color: rgba(255,255,255,0.05);
+      }
+      [data-theme="dark"] .log-header {
+        background: linear-gradient(135deg, #312e81 0%, #1e1b4b 100%);
+        border-color: rgba(255,255,255,0.05);
+      }
+      [data-theme="dark"] .after-header {
+        background: linear-gradient(135deg, #064e3b 0%, #022c22 100%);
+        border-color: rgba(255,255,255,0.05);
+      }
+      [data-theme="dark"] .hack-card {
+        border-top: 4px solid #b91c1c;
+      }
+      [data-theme="dark"] .log-card {
+        border-top: 4px solid #4338ca;
+      }
+      [data-theme="dark"] .after-card {
+        border-top: 4px solid #047857;
+      }
     </style>
   </head>
   <body>
@@ -604,7 +671,7 @@
         </h1>
         <div style="margin-top: 20px; font-size: 1rem; color: var(--text-secondary); font-weight: 500; font-style: italic; max-width: 90%; margin-left: auto; margin-right: auto; line-height: 1.5;">
             <p style="margin: 0;">
-                Questo documento non è una guida rigida da seguire alla lettera, ma uno schema ottimizzato per condurre controlli SS su Minecraft 1.21+ in modo rapido ed efficace.
+                Questo documento non è una guida rigida da seguire alla lettera, ma uno schema ottimizzato per condurre controlli SS e Log su Minecraft 1.21+ in modo rapido ed efficace.
                 <br><br>
                 Seguendo questi passaggi riuscirete a individuare la maggior parte dei cheater su Titanet in poco tempo.
                 Tuttavia, ogni controllo è unico: variazioni e adattamenti basati sulle tracce rilevate sono non solo normali, ma necessari.
@@ -625,11 +692,17 @@
           </span>
       </button>
 
-      <div class="section-title" style="margin-top: 0">
-        <h2>ℹ️ Info Generali</h2>
+      <!-- MACRO: CONTROLLI HACK -->
+      <div class="category-header hack-header">
+        <h1>🛡️ Controlli Hack</h1>
+        <p>Sezione dedicata ai controlli e indagini in ScreenShare al PC dell'utente.</p>
       </div>
 
-      <div class="check-card">
+      <div class="section-title" style="margin-top: 0">
+        <h2>ℹ️ Info Controlli Hack</h2>
+      </div>
+
+      <div class="check-card hack-card">
         <h3 class="card-title" style="margin-bottom: 15px">
           Preparazione al controllo
         </h3>
@@ -648,11 +721,11 @@
 
       <div class="section-title">
         <h2>
-          🔍 Passaggi
+          🔍 Passaggi Controlli Hack
         </h2>
       </div>
 
-      <div class="check-card">
+      <div class="check-card hack-card">
         <div class="card-header">
           <h2 class="card-title">
             <span class="card-emoji">📜</span> 1. Script per Check Generici
@@ -683,7 +756,7 @@
         </p>
       </div>
 
-      <div class="check-card">
+      <div class="check-card hack-card">
         <div class="card-header">
           <h2 class="card-title">
             <span class="card-emoji">🤖</span> 2. SS Tool Automatico (consigliato)
@@ -703,7 +776,7 @@
         </p>
       </div>
 
-      <div class="check-card">
+      <div class="check-card hack-card">
         <div class="card-header">
           <h2 class="card-title">
             <span class="card-emoji">💎</span> 3. Controlla Xray Texturepack
@@ -717,7 +790,7 @@
         </p>
       </div>
 
-      <div class="check-card">
+      <div class="check-card hack-card">
         <div class="card-header">
           <h2 class="card-title">
             <span class="card-emoji">🧰</span> 4. RedLotus Tool Downloader
@@ -750,7 +823,7 @@
         </div>
       </div>
 
-      <div class="check-card">
+      <div class="check-card hack-card">
         <div class="card-header">
           <h2 class="card-title">
             <span class="card-emoji">🧊</span> 5. RedLotus Mod Analyzer
@@ -781,7 +854,7 @@
         </p>
       </div>
 
-      <div class="check-card">
+      <div class="check-card hack-card">
         <div class="card-header">
           <h2 class="card-title">
             <span class="card-emoji">🔎</span> 6. Spok's BAM Parser & Deleted
@@ -886,7 +959,7 @@
         </div>
         </div>
 
-      <div class="check-card">
+      <div class="check-card hack-card">
         <div class="card-header">
           <h2 class="card-title">
             <span class="card-emoji">🧠</span> 7. Spok's Prefetch Parser
@@ -923,7 +996,7 @@
         </div>
       </div>
 
-      <div class="check-card">
+      <div class="check-card hack-card">
         <div class="card-header">
           <h2 class="card-title">
             <span class="card-emoji">🖥️</span> 8. NVIDIA Control Panel
@@ -953,7 +1026,7 @@
         </div>
       </div>
 
-      <div class="check-card">
+      <div class="check-card hack-card">
         <div class="card-header">
           <h2 class="card-title">
             <span class="card-emoji">🕵️‍♂️</span> 9. System Informer & Path Parser
@@ -1038,7 +1111,7 @@
         </div>
         </div>
 
-      <div class="check-card">
+      <div class="check-card hack-card">
         <div class="card-header">
           <h2 class="card-title">
             <span class="card-emoji">📓</span> 10. Journal Trace
@@ -1123,14 +1196,58 @@
         </div>
       </div>
 
-      <div class="section-title">
-        <h2>📁 Controlli Log</h2>
+      <!-- MACRO: CONTROLLI LOG -->
+      <div class="category-header log-header">
+        <h1>📁 Controlli Log</h1>
+        <p>Sezione dedicata ai controlli su Log e strumenti ad essi associati.</p>
       </div>
 
-      <div class="check-card">
+      <div class="section-title" style="margin-top: 0">
+        <h2>ℹ️ Info Controlli Log</h2>
+      </div>
+
+      <div class="check-card log-card">
+        <h3 class="card-title" style="margin-bottom: 15px">
+          Preparazione al controllo
+        </h3>
+        <ul class="styled-list">
+          <li>
+            <span class="list-category">Controlli Preliminari:</span> Prima di chiedere AnyDesk, verifica il <strong>DupeIP</strong>, le <strong>StaffNotes</strong> e le sanzioni passate su Discord per inquadrare la situazione.
+          </li>
+          <li>
+            <span class="list-category">Setup Ambiente:</span> Avvia una <strong>VPN</strong> per proteggerti, avvia la <strong>Registrazione</strong>, richiedi i privilegi elevati su AnyDesk e crea una cartella <code>SS</code> sul desktop per i tool.
+          </li>
+        </ul>
+      </div>
+
+      <div class="section-title">
+        <h2>
+          🔍 Passaggi Controlli Log
+        </h2>
+      </div>
+
+      <div class="check-card log-card">
         <div class="card-header">
           <h2 class="card-title">
-            <span class="card-emoji">👥</span> RedLotus Alt Checker
+            <span class="card-emoji">🌐</span> 1. Controllo VPN
+          </h2>
+        </div>
+        <p>Avvia subito questo script per verificare se la VPN dell'utente è accesa in questo momento.</p>
+        <div class="code-container">
+          <button class="btn-copy-code" onclick="copyText('script-vpn-log', this)">
+            Copia Script 📋
+          </button>
+          <code id="script-vpn-log" class="code-block-dark">powershell Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass && powershell Invoke-Expression (Invoke-RestMethod https://pastebin.com/raw/pa5dMLAM)</code>
+        </div>
+        <div class="motivation" style="border-left-color: #ef4444;">
+          <strong>Azione:</strong> Se rilevi una VPN attiva o l'utente ammette di usarla, <strong>interrompi il controllo</strong> e sanziona per VPN in Uso.
+        </div>
+      </div>
+
+      <div class="check-card log-card">
+        <div class="card-header">
+          <h2 class="card-title">
+            <span class="card-emoji">👥</span> 2. RedLotus Alt Checker
           </h2>
           <div class="tool-actions">
             <a
@@ -1153,26 +1270,75 @@
           </div>
         </div>
         <p>
-          Un tool automatico che ti permette di fare i controlli log in pochi
-          secondi.<br />
-          Apri, esegui uno scan con la funzione che preferisci e ottieni
-          informazioni relativi agli alt.
+          Un tool automatico che ti permette di fare i controlli log in pochi secondi.<br>
+          Apri, esegui uno scan con la funzione che preferisci e ottieni informazioni relativi agli alt.
         </p>
         <div class="motivation">
           <strong>Integrazione Journal:</strong>
-          <em
-            >Ci sono inoltre già integrati i check del Journal per assicurarsi
-            che le traccie non siano state manomesse o rimosse
-            completamente.</em
-          >
+          Ci sono inoltre già integrati i check del Journal per assicurarsi che le traccie non siano state manomesse o rimosse completamente.
         </div>
       </div>
 
-      <div class="section-title">
-        <h2>🏁 Dopo il controllo</h2>
+      <div class="check-card log-card">
+        <div class="card-header">
+          <h2 class="card-title">
+            <span class="card-emoji">📂</span> 3. Controllo Manuale dei Risultati
+          </h2>
+        </div>
+        <p>
+          Usa sempre il tasto "Apri" nativo di RedLotus Alt Checker per aprire direttamente la traccia sospetta ed esplorarla.<br>
+          <span style="font-size: 0.85em; color: var(--text-secondary);"><em>Alternativa: Usa il tool <strong>Search Everything</strong> per scovare eventuali cartelle spostate o nascoste (da usare solo se il tasto Apri fallisce o il tool non localizza directory custom).</em></span>
+        </p>
+        <div class="motivation">
+          <strong>Cosa cercare (Keyword Protocol):</strong><br>
+          <em>Premi <code>Ctrl+F</code> e cerca specifici termini all'interno di file <code>.json</code> e <code>.log</code>. Ignora gli innocui log delle chat pubbliche se non indicano palesi ammissioni.</em>
+          
+          <ul class="styled-list" style="margin-top: 10px;">
+              <li>
+                  <span class="list-category">Termini Chiave:</span><br>
+                  <span class="regex-pill"><span class="pill-icon">👤</span> <span class="regex-value">Nickname esatti</span></span>
+                  <span class="regex-pill"><span class="pill-icon">🆔</span> <span class="regex-value">UUID (36 o 32 char)</span></span>
+              </li>
+              <li style="margin-top: 10px;">
+                  <span class="list-category">Etichette Comuni (Config / Log):</span><br>
+                  <span class="regex-pill" onclick="copyTextDirectly('&quot;username&quot;', 'Label username copiato! 📋')" style="cursor: pointer;"><span class="pill-icon">🏷️</span> <span class="regex-value">"username"</span></span>
+                  <span class="regex-pill" onclick="copyTextDirectly('--uuid', 'Label --uuid copiato! 📋')" style="cursor: pointer;"><span class="pill-icon">🆔</span> <span class="regex-value">--uuid</span></span>
+                  <span class="regex-pill" onclick="copyTextDirectly('Token', 'Label Token copiato! 📋')" style="cursor: pointer;"><span class="pill-icon">🔑</span> <span class="regex-value">Token</span></span>
+                  <span class="regex-pill" onclick="copyTextDirectly('Setting user:', 'Label Setting user copiato! 📋')" style="cursor: pointer;"><span class="pill-icon">⚙️</span> <span class="regex-value">Setting user:</span></span>
+                  <span class="regex-pill" onclick="copyTextDirectly('Setting account', 'Label Setting account copiato! 📋')" style="cursor: pointer;"><span class="pill-icon">⚙️</span> <span class="regex-value">Setting account</span></span>
+                  <span class="regex-pill" onclick="copyTextDirectly('Logged in as', 'Label Logged in as copiato! 📋')" style="cursor: pointer;"><span class="pill-icon">🔓</span> <span class="regex-value">Logged in as</span></span>
+                  <span class="regex-pill" onclick="copyTextDirectly('Connection established as', 'Label Connection established as copiato! 📋')" style="cursor: pointer;"><span class="pill-icon">📡</span> <span class="regex-value">Connection established as</span></span>
+              </li>
+          </ul>
+        </div>
       </div>
 
-      <div class="check-card">
+      <div class="check-card log-card">
+        <div class="card-header">
+          <h2 class="card-title">
+            <span class="card-emoji">📓</span> 4. Controllo JournalTrace (se necessario)
+          </h2>
+          <div class="tool-actions">
+            <a href="https://github.com/spokwn/JournalTrace/releases" target="_blank" class="btn-tool btn-open">Apri ↗</a>
+            <button class="btn-tool btn-copy-link" onclick="copyTextDirectly('https://github.com/spokwn/JournalTrace/releases', 'Link Journal copiato! 🔗')">Copia Link 🔗</button>
+          </div>
+        </div>
+        <p>
+          In caso di sospetti manipolazioni Anti-Forensics, apri JournalTrace e filtra per estensioni come <code>.log</code>, <code>.json</code> o <code>.gz</code>.
+        </p>
+        <div class="motivation" style="border-left-color: #f59e0b;">
+          <strong>Cosa cercare:</strong><br>
+          <em>Eventuali operazioni di <code>Deleted</code>, <code>Overwritten</code>, <code>Data Truncation</code>, <code>Data Overwrite</code> o <code>Basic Info Change</code> che potrebbero indicare un tentativo volontario di occultare o distruggere prove.</em>
+        </div>
+      </div>
+
+      <!-- MACRO: DOPO IL CONTROLLO -->
+      <div class="category-header after-header">
+        <h1>🏁 Dopo il controllo</h1>
+        <p>Sezione dedicata a ban, pulizia tracce, tabelle e logica amministrativa.</p>
+      </div>
+
+      <div class="check-card after-card">
         <h3 class="card-title" style="margin-bottom: 15px">Cleanup e Report</h3>
         <p>
           Elimina i vari tool scaricati ed eventuali file creati da te. Lascia quindi il PC nello stesso stato prima della tua connessione. Una volta fatto ciò, compila il modulo qua sotto e invialo in un post di Discord nella sezione Prove Ban nel caso in cui tu debba bannare il player in questione.
@@ -1212,7 +1378,7 @@
         <h2>⚖️ Tabella delle Infrazioni</h2>
       </div>
 
-      <div class="check-card">
+      <div class="check-card after-card">
         
         <div class="player-input-container">
             <span style="font-size: 1.2rem;">👤</span>
@@ -1235,6 +1401,12 @@
                   <td>Ammissione</td>
                   <td><span class="duration-badge duration-short">7d</span></td>
                   <td><button class="btn-copy-cmd" onclick="copyBanCommand('7d', 'Ammissione')">Copia</button></td>
+              </tr>
+              <tr>
+                  <td>Evasione di un ban con un Alt</td>
+                  <td>Ban Evading</td>
+                  <td><span class="duration-badge duration-long">30d</span></td>
+                  <td><button class="btn-copy-cmd" onclick="copyBanCommand('30d', 'Ban Evading <Alt Username> ')">Copia</button></td>
               </tr>
               <tr>
                   <td>Impossibilità di svolgere il controllo</td>
@@ -1341,7 +1513,7 @@
         <h2>🔄 Principio di Recidiva</h2>
       </div>
 
-      <div class="check-card">
+      <div class="check-card after-card">
         <h3 class="card-title" style="margin-bottom: 10px;">Cos'è la Recidiva?</h3>
         <p>
           La recidiva si verifica quando un utente commette nuovamente un'infrazione dopo essere già stato sanzionato in passato per una violazione simile o correlata. Questo comportamento dimostra una mancata volontà di rispettare le regole e richiede un approccio sanzionatorio progressivo.
